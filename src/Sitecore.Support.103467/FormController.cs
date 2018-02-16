@@ -9,11 +9,11 @@ using Sitecore.Forms.Mvc.ViewModels;
 using Sitecore.Mvc.Controllers;
 using Sitecore.WFFM.Abstractions.Dependencies;
 using Sitecore.WFFM.Abstractions.Shared;
-using System;
 using System.IO;
 using System.Web.Mvc;
+using Sitecore.Forms.Mvc.Controllers;
 
-namespace Sitecore.Forms.Mvc.Controllers
+namespace Sitecore.Support.Forms.Mvc.Controllers
 {
   [ModelBinder(typeof(FormModelBinder))]
   public class FormController : SitecoreController
@@ -54,7 +54,7 @@ namespace Sitecore.Forms.Mvc.Controllers
       this.analyticsTracker = analyticsTracker;
     }
 
-    [FormErrorHandler, HttpGet]
+    [FormErrorHandler, AcceptVerbs(HttpVerbs.Get | HttpVerbs.Head)]
     public override ActionResult Index()
     {
       return this.Form();
