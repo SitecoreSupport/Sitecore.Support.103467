@@ -28,12 +28,12 @@ namespace Sitecore.Support.Forms.Mvc.Controllers
       base(repository,mapper,processor,analyticsTracker)
     {
       
-    }
-
-    [FormErrorHandler, AcceptVerbs(HttpVerbs.Get | HttpVerbs.Head)]
-    public override ActionResult Index()
+    }   
+    
+    [HttpHead]
+    public ActionResult Index(string none)
     {
-      return this.Form();
-    }  
+      return base.Index();
+    }
   }
 }
